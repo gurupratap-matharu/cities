@@ -13,5 +13,9 @@ COPY requirements.txt /code/
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+# install gdal
+RUN apt-get update &&\
+    apt-get install -y binutils libproj-dev gdal-bin
+
 # copy project
 COPY . /code/
