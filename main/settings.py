@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 
     # Third party
     'crispy_forms',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_extensions',
+    'cities',
 
     # Local
     'users.apps.UsersConfig',
@@ -66,6 +68,16 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# django-cities
+
+
+CITIES_DATA_DIR = '/var/data'
+
+# Import cities without region (default False)
+CITIES_SKIP_CITIES_WITH_EMPTY_REGIONS = True
+CITIES_VALIDATE_POSTAL_CODES = True
+CITIES_LOCALES = ['en', 'und', 'LANGUAGES']
+CITIES_POSTAL_CODES = ['US', 'CA']
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -109,11 +121,11 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': os.environ.get('DATABASE_NAME'),
         'USER': os.environ.get('DATABASE_USER'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': os.environ.get('DATABASE_HOST', default='db'),
+        'HOST': os.environ.get('DATABASE_HOST', default='localhost'),
         'PORT': 5432
     }
 }
