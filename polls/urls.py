@@ -1,8 +1,8 @@
 from django.urls import path
 
-from polls.views import (QuestionCreate, QuestionDelete, QuestionDetailView,
-                         QuestionListView, QuestionUpdate, ResultsView,
-                         VoteView)
+from polls.views import (ContinentListView, CountryListView, QuestionCreate,
+                         QuestionDelete, QuestionDetailView, QuestionListView,
+                         QuestionUpdate, ResultsView, VoteView)
 
 app_name = 'polls'
 urlpatterns = [
@@ -13,4 +13,6 @@ urlpatterns = [
     path('<uuid:pk>/delete/', QuestionDelete.as_view(), name='question_delete'),
     path('<uuid:pk>/results/', ResultsView.as_view(), name='results'),
     path('<uuid:pk>/vote/', VoteView.as_view(), name='vote'),
+    path('continent/', ContinentListView.as_view(), name='continent_list'),
+    path('country/', CountryListView.as_view(), name='country_list'),
 ]

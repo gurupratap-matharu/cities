@@ -1,5 +1,6 @@
 import logging
 
+from cities.models import Continent, Country
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -74,3 +75,15 @@ class VoteView(TemplateView):
 
 class ResultsView(TemplateView):
     template_name = 'polls/results.html'
+
+
+class ContinentListView(ListView):
+    model = Continent
+    context_object_name = 'continent_list'
+    template_name = 'polls/continent_list.html'
+
+
+class CountryListView(ListView):
+    model = Country
+    context_object_name = 'country_list'
+    template_name = 'polls/country_list.html'
