@@ -73,11 +73,20 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CITIES_DATA_DIR = '/var/data'
 
+CITIES_FILES = {
+    'city': {
+        'filename': 'cities1000.zip',
+        'urls':     ['http://download.geonames.org/export/dump/'+'{filename}']
+    },
+}
+
 # Import cities without region (default False)
 CITIES_SKIP_CITIES_WITH_EMPTY_REGIONS = True
 CITIES_VALIDATE_POSTAL_CODES = True
 CITIES_LOCALES = ['en', 'und', 'LANGUAGES']
 CITIES_POSTAL_CODES = ['US', 'CA']
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
