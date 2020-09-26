@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'pages:home' %}" class="text-dark text-decoration-none">
+        <div class="d-flex">
+            <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+            <p class="lead ml-2">Country</p>
+        </div>
+    </a>
+    <hr class="p-3">
+
+    <a href=""><button class="btn btn-light btn-block btn-outline-success mb-5" aria-pressed="false"
+            autocomplete="off">Add</button></a>
+    {% for country in country_list %}
+    <a href="" class="text-dark">
+        <p class="lead">{{ country }}</p>
+    </a>
+    {% endfor %}
+</div>
+{% endblock content %}
