@@ -1,1 +1,1 @@
-# polls
+# Geodjango
